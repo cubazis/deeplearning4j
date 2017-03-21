@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by aydar on 21.03.17.
  */
-public class MyLogger implements IterationListener {
+public class ILogger implements IterationListener {
     private boolean invoked = false;
     private long startTime, endTime;
     private ArrayList<Integer> arrayList = new ArrayList<>();

@@ -1,4 +1,4 @@
-package org.deeplearning4j.examples.feedforward.mnist.Logger;
+package org.deeplearning4j.logger;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by aydar on 21.03.17.
  */
-public class MyDrawer extends Application {
+public class IDrawer extends Application {
     AnimationTimer loop;
     static int row = 250, column;
     static ArrayList<Integer> myArray;
@@ -34,7 +34,7 @@ public class MyDrawer extends Application {
         primaryStage.setScene(theScene);
         Canvas canvas = new Canvas(column, row);
         root.getChildren().add(canvas);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        final GraphicsContext gc = canvas.getGraphicsContext2D();
 
         loop = new AnimationTimer() {
             @Override

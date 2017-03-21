@@ -22,10 +22,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.deeplearning4j.examples.feedforward.mnist.Logger;
+package org.deeplearning4j.logger;
 
-import org.deeplearning4j.examples.feedforward.mnist.Logger.slf4j.Logger;
-import org.deeplearning4j.examples.feedforward.mnist.Logger.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <code>ILoggerFactory</code> instances manufacture {@link Logger}

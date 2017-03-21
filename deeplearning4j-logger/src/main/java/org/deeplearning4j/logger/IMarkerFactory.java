@@ -22,7 +22,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.deeplearning4j.examples.feedforward.mnist.Logger;
+import org.slf4j.Logger;
 
 /**
  * Implementations of this interface are used to manufacture {@link Marker}

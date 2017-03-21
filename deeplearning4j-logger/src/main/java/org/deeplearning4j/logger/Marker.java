@@ -22,7 +22,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.deeplearning4j.examples.feedforward.mnist.Logger;
+package org.deeplearning4j.logger;
 
 import java.io.Serializable;
 import java.util.Iterator;
