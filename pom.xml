@@ -309,6 +309,7 @@
         <module>deeplearning4j-nn</module>
         <module>deeplearning4j-modelimport</module>
         <module>deeplearning4j-keras</module>
+        <module>deeplearning4j-logger</module>
     </modules>
 
     <licenses>
