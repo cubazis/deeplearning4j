@@ -1,4 +1,4 @@
-package org.deeplearning4j.examples.feedforward.mnist.Logger;
+package org.deeplearning4j.logger;
 
 import org.deeplearning4j.nn.api.Model;
 import org.deeplearning4j.optimize.api.IterationListener;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by aydar on 21.03.17.
  */
-public class ILogger implements IterationListener {
+public class InLogger implements IterationListener {
     private boolean invoked = false;
     private long startTime, endTime;
     private ArrayList<Integer> arrayList = new ArrayList<>();

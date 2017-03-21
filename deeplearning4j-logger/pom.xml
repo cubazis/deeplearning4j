@@ -16,6 +16,16 @@
             <artifactId>deeplearning4j-nn</artifactId>
             <version>0.8.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-nn</artifactId>
+            <version>0.8.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.parquet</groupId>
+            <artifactId>parquet-format</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
 
