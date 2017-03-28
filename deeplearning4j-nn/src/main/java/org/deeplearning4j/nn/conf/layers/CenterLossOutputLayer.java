@@ -26,8 +26,8 @@ import org.deeplearning4j.nn.api.Layer;
 import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.Updater;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.CenterLossParamInitializer;
-import org.deeplearning4j.nn.params.DefaultParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.util.LayerValidation;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -66,8 +66,8 @@ public class CenterLossOutputLayer extends BaseOutputLayer {
     }
 
     @Override
-    public Layer instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
-                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
+                                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
         LayerValidation.assertNInNOutSet("CenterLossOutputLayer", getLayerName(), layerIndex, getNIn(), getNOut());
 
         Layer ret = new org.deeplearning4j.nn.layers.training.CenterLossOutputLayer(conf);
@@ -186,7 +186,7 @@ public class CenterLossOutputLayer extends BaseOutputLayer {
 
         @Override
         @SuppressWarnings("unchecked")
-        public CenterLossOutputLayer build() {
+        public LeftAndRightPaddingLayer build() {
             return new CenterLossOutputLayer(this);
         }
     }

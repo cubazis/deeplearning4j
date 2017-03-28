@@ -1,10 +1,10 @@
 package org.deeplearning4j.nn.conf.layers;
 
 import lombok.*;
-import org.deeplearning4j.nn.conf.ConvolutionMode;
 import org.deeplearning4j.nn.conf.InputPreProcessor;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.inputs.InputType;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.util.*;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -36,7 +36,7 @@ public class Convolution1DLayer extends ConvolutionLayer {
     }
 
     @Override
-    public org.deeplearning4j.nn.api.Layer instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView, boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView, boolean initializeParams) {
         org.deeplearning4j.util.LayerValidation.assertNInNOutSet("Convolution1DLayer", getLayerName(), layerIndex, getNIn(), getNOut());
 
         org.deeplearning4j.nn.layers.convolution.Convolution1DLayer ret
@@ -123,7 +123,7 @@ public class Convolution1DLayer extends ConvolutionLayer {
 
         @Override
         @SuppressWarnings("unchecked")
-        public Convolution1DLayer build() {
+        public LeftAndRightPaddingLayer build() {
             ConvolutionUtils.validateCnnKernelStridePadding(kernelSize, stride, padding);
 
             return new Convolution1DLayer(this);

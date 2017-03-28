@@ -5,6 +5,7 @@ import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.InputPreProcessor;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.inputs.InputType;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.EmptyParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -27,9 +28,9 @@ public class DropoutLayer extends FeedForwardLayer {
     }
 
     @Override
-    public org.deeplearning4j.nn.api.Layer instantiate(NeuralNetConfiguration conf,
-                    Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView,
-                    boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf,
+                                    Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView,
+                                    boolean initializeParams) {
         org.deeplearning4j.nn.layers.DropoutLayer ret = new org.deeplearning4j.nn.layers.DropoutLayer(conf);
         ret.setListeners(iterationListeners);
         ret.setIndex(layerIndex);
@@ -89,7 +90,7 @@ public class DropoutLayer extends FeedForwardLayer {
 
         @Override
         @SuppressWarnings("unchecked")
-        public DropoutLayer build() {
+        public LeftAndRightPaddingLayer build() {
 
             return new DropoutLayer(this);
         }

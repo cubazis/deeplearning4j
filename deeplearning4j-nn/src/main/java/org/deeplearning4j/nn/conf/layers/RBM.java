@@ -19,9 +19,9 @@
 package org.deeplearning4j.nn.conf.layers;
 
 import lombok.*;
-import org.deeplearning4j.nn.api.Layer;
 import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.PretrainParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -64,8 +64,8 @@ public class RBM extends BasePretrainNetwork {
     protected double sparsity;
 
     @Override
-    public Layer instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
-                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
+                                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
         org.deeplearning4j.nn.layers.feedforward.rbm.RBM ret =
                         new org.deeplearning4j.nn.layers.feedforward.rbm.RBM(conf);
         ret.setListeners(iterationListeners);
@@ -113,7 +113,7 @@ public class RBM extends BasePretrainNetwork {
 
         @Override
         @SuppressWarnings("unchecked")
-        public RBM build() {
+        public LeftAndRightPaddingLayer build() {
             return new RBM(this);
         }
 

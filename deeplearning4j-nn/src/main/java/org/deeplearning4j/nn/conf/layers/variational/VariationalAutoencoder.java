@@ -2,10 +2,11 @@ package org.deeplearning4j.nn.conf.layers.variational;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.deeplearning4j.nn.api.Layer;
 import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.layers.BasePretrainNetwork;
+import org.deeplearning4j.nn.conf.layers.LeftAndRightPaddingLayer;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.VariationalAutoencoderParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.util.LayerValidation;
@@ -53,8 +54,8 @@ public class VariationalAutoencoder extends BasePretrainNetwork {
     }
 
     @Override
-    public Layer instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
-                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
+                                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
         LayerValidation.assertNInNOutSet("VariationalAutoencoder", getLayerName(), layerIndex, getNIn(), getNOut());
 
         org.deeplearning4j.nn.layers.variational.VariationalAutoencoder ret =
@@ -252,7 +253,7 @@ public class VariationalAutoencoder extends BasePretrainNetwork {
 
         @Override
         @SuppressWarnings("unchecked")
-        public VariationalAutoencoder build() {
+        public LeftAndRightPaddingLayer build() {
             return new VariationalAutoencoder(this);
         }
     }

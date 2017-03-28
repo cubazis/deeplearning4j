@@ -37,15 +37,15 @@ import java.util.Map;
  */
 @Data
 @NoArgsConstructor
-public class GlobalPoolingLayer extends Layer {
+public class CNNPoolingLayer extends SpecifiedLayer {
 
     private PoolingType poolingType;
     private int[] poolingDimensions;
     private int pnorm;
     private boolean collapseDimensions;
 
-    private GlobalPoolingLayer(Builder builder) {
-        super(builder);
+    private CNNPoolingLayer(Builder builder) {
+        super(tab);
         this.poolingType = builder.poolingType;
         this.poolingDimensions = builder.poolingDimensions;
         this.collapseDimensions = builder.collapseDimensions;
@@ -58,8 +58,8 @@ public class GlobalPoolingLayer extends Layer {
     public LeftAndRight instantiate(NeuralNetConfiguration conf,
                                     Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView,
                                     boolean initializeParams) {
-        org.deeplearning4j.nn.layers.pooling.GlobalPoolingLayer ret =
-                        new org.deeplearning4j.nn.layers.pooling.GlobalPoolingLayer(conf);
+        org.deeplearning4j.nn.layers.pooling.CNNPoolingLayer ret =
+                        new org.deeplearning4j.nn.layers.pooling.CNNPoolingLayer(conf);
         ret.setListeners(iterationListeners);
         ret.setIndex(layerIndex);
         ret.setParamsViewArray(layerParamsView);
@@ -78,19 +78,6 @@ public class GlobalPoolingLayer extends Layer {
     public InputType getOutputType(int layerIndex, InputType inputType) {
 
         switch (inputType.getType()) {
-            case FF:
-                throw new UnsupportedOperationException(
-                                "Global max pooling cannot be applied to feed-forward input type. Got input type = "
-                                                + inputType);
-            case RNN:
-                InputType.InputTypeRecurrent recurrent = (InputType.InputTypeRecurrent) inputType;
-                if (collapseDimensions) {
-                    //Return 2d (feed-forward) activations
-                    return InputType.feedForward(recurrent.getSize());
-                } else {
-                    //Return 3d activations, with shape [minibatch, timeStepSize, 1]
-                    return recurrent;
-                }
             case CNN:
                 InputType.InputTypeConvolutional conv = (InputType.InputTypeConvolutional) inputType;
                 if (collapseDimensions) {
@@ -119,13 +106,7 @@ public class GlobalPoolingLayer extends Layer {
     public InputPreProcessor getPreProcessorForInputType(InputType inputType) {
 
         switch (inputType.getType()) {
-            case FF:
-                throw new UnsupportedOperationException(
-                                "Global max pooling cannot be applied to feed-forward input type. Got input type = "
-                                                + inputType);
-            case RNN:
             case CNN:
-                //No preprocessor required
                 return null;
             case CNNFlat:
                 InputType.InputTypeConvolutionalFlat cFlat = (InputType.InputTypeConvolutionalFlat) inputType;
@@ -219,7 +200,7 @@ public class GlobalPoolingLayer extends Layer {
 
         @SuppressWarnings("unchecked")
         public LeftAndRightPaddingLayer build() {
-            return new GlobalPoolingLayer(this);
+            return new CNNPoolingLayer(this);
         }
     }
 }

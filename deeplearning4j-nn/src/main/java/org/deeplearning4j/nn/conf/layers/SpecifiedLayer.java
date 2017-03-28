@@ -68,7 +68,7 @@ import java.util.Map;
 })
 @Data
 @NoArgsConstructor
-public class Layer implements iPrototype {
+public class SpecifiedLayer implements iPrototype {
     protected String layerName;
     protected IActivation activationFn;
     protected WeightInit weightInit;
@@ -98,7 +98,7 @@ public class Layer implements iPrototype {
     protected double gradientNormalizationThreshold = 1.0; //Threshold for l2 and element-wise gradient clipping
 
 
-    public Layer(Builder builder) {
+    public SpecifiedLayer(Builder builder) {
         this.layerName = builder.layerName;
         this.activationFn = builder.activationFn;
         this.weightInit = builder.weightInit;
@@ -124,12 +124,25 @@ public class Layer implements iPrototype {
         this.gradientNormalizationThreshold = builder.gradientNormalizationThreshold;
     }
 
+    public SpecifiedLayer(TopAndBottomPaddingLayer.Builder tab) {
+
+    }
+
+    public SpecifiedLayer(LeftAndRightPaddingLayer.Builder lar) {
+    }
+
+
+    @Override
+    public void resetLayerDefaultConfig() {
+
+    }
+
     /**
      * Reset the learning related configs of the layer to default. When instantiated with a global neural network configuration
      * the parameters specified in the neural network configuration will be used.
      * For internal use with the transfer learning API. Users should not have to call this method directly.
      */
-    public void resetLayerDefaultConfig() {
+/*    public void resetLayerDefaultConfig() {
         //clear the learning related params for all layers in the origConf and set to defaults
         this.setUpdater(null);
         this.setMomentum(Double.NaN);
@@ -150,12 +163,12 @@ public class Layer implements iPrototype {
         this.setAdamVarDecay(Double.NaN);
         this.setGradientNormalization(GradientNormalization.None);
         this.setGradientNormalizationThreshold(1.0);
-    }
+    }*/
 
     @Override
-    public Layer clone() {
+    public SpecifiedLayer clone() {
         try {
-            Layer clone = (Layer) super.clone();
+            SpecifiedLayer clone = (SpecifiedLayer) super.clone();
             if (clone.dist != null)
                 clone.dist = clone.dist.clone();
             if (clone.learningRateSchedule != null)
@@ -401,7 +414,7 @@ public class Layer implements iPrototype {
         /**
          * Weight initialization scheme.
          *
-         * @see org.deeplearning4j.nn.weights.WeightInit
+         * @see WeightInit
          */
         public T weightInit(WeightInit weightInit) {
             this.weightInit = weightInit;
@@ -594,6 +607,6 @@ public class Layer implements iPrototype {
         }
 
 
-        public abstract <E extends Layer> LeftAndRightPaddingLayer build();
+        public abstract <E extends SpecifiedLayer> E build();
     }
 }

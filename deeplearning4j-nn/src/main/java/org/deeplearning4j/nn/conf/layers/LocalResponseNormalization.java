@@ -5,6 +5,7 @@ import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.InputPreProcessor;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.inputs.InputType;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.EmptyParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -42,9 +43,9 @@ public class LocalResponseNormalization extends Layer {
     }
 
     @Override
-    public org.deeplearning4j.nn.api.Layer instantiate(NeuralNetConfiguration conf,
-                    Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView,
-                    boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf,
+                                    Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView,
+                                    boolean initializeParams) {
         org.deeplearning4j.nn.layers.normalization.LocalResponseNormalization ret =
                         new org.deeplearning4j.nn.layers.normalization.LocalResponseNormalization(conf);
         ret.setListeners(iterationListeners);
@@ -162,7 +163,7 @@ public class LocalResponseNormalization extends Layer {
         }
 
         @Override
-        public LocalResponseNormalization build() {
+        public LeftAndRightPaddingLayer build() {
             return new LocalResponseNormalization(this);
         }
 

@@ -1,13 +1,13 @@
 package org.deeplearning4j.nn.conf.layers;
 
 import lombok.*;
-import org.deeplearning4j.nn.api.Layer;
 import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.InputPreProcessor;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.Updater;
 import org.deeplearning4j.nn.conf.inputs.InputType;
 import org.deeplearning4j.nn.conf.preprocessor.FeedForwardToCnnPreProcessor;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.BatchNormalizationParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -49,8 +49,8 @@ public class BatchNormalization extends FeedForwardLayer {
     }
 
     @Override
-    public Layer instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
-                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
+                                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
         org.deeplearning4j.nn.layers.normalization.BatchNormalization ret =
                         new org.deeplearning4j.nn.layers.normalization.BatchNormalization(conf);
         ret.setListeners(iterationListeners);
@@ -72,8 +72,8 @@ public class BatchNormalization extends FeedForwardLayer {
     public InputType getOutputType(int layerIndex, InputType inputType) {
         if (inputType == null) {
             throw new IllegalStateException(
-                            "Invalid input type: Batch norm layer expected input of type CNN, got null for layer \""
-                                            + getLayerName() + "\"");
+                    "Invalid input type: Batch norm layer expected input of type CNN, got null for layer \""
+                            + getLayerName() + "\"");
         }
 
         //Can handle CNN, flat CNN or FF input formats only
@@ -84,9 +84,9 @@ public class BatchNormalization extends FeedForwardLayer {
                 return inputType; //OK
             default:
                 throw new IllegalStateException(
-                                "Invalid input type: Batch norm layer expected input of type CNN, CNN Flat or FF, got "
-                                                + inputType + " for layer index " + layerIndex + ", layer name = "
-                                                + getLayerName());
+                        "Invalid input type: Batch norm layer expected input of type CNN, CNN Flat or FF, got "
+                                + inputType + " for layer index " + layerIndex + ", layer name = "
+                                + getLayerName());
         }
     }
 
@@ -159,6 +159,10 @@ public class BatchNormalization extends FeedForwardLayer {
             default:
                 throw new IllegalArgumentException("Unknown parameter: \"" + paramName + "\"");
         }
+    }
+
+    public String getLayerName() {
+        return layerName;
     }
 
     @AllArgsConstructor
@@ -265,7 +269,7 @@ public class BatchNormalization extends FeedForwardLayer {
         }
 
         @Override
-        public BatchNormalization build() {
+        public LeftAndRightPaddingLayer build() {
             return new BatchNormalization(this);
         }
     }

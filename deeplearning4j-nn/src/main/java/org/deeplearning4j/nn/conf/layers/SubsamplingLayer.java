@@ -6,6 +6,7 @@ import org.deeplearning4j.nn.conf.ConvolutionMode;
 import org.deeplearning4j.nn.conf.InputPreProcessor;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.inputs.InputType;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.EmptyParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.util.ConvolutionUtils;
@@ -83,7 +84,7 @@ public class SubsamplingLayer extends Layer {
     }
 
     @Override
-    public org.deeplearning4j.nn.api.Layer instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView, boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView, boolean initializeParams) {
         org.deeplearning4j.nn.layers.convolution.subsampling.SubsamplingLayer ret
                 = new org.deeplearning4j.nn.layers.convolution.subsampling.SubsamplingLayer(conf);
         ret.setListeners(iterationListeners);
@@ -226,7 +227,7 @@ public class SubsamplingLayer extends Layer {
 
         @Override
         @SuppressWarnings("unchecked")
-        public SubsamplingLayer build() {
+        public LeftAndRightPaddingLayer build() {
             if(poolingType == org.deeplearning4j.nn.conf.layers.PoolingType.PNORM && pnorm <= 0) throw new IllegalStateException("Incorrect Subsampling config: p-norm must be set when using PoolingType.PNORM");
             ConvolutionUtils.validateCnnKernelStridePadding(kernelSize, stride, padding);
 

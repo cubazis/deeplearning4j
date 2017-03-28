@@ -1,9 +1,9 @@
 package org.deeplearning4j.nn.conf.layers;
 
 import lombok.*;
-import org.deeplearning4j.nn.api.Layer;
 import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.DefaultParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -32,8 +32,8 @@ public class EmbeddingLayer extends FeedForwardLayer {
     }
 
     @Override
-    public Layer instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
-                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
+                                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
         org.deeplearning4j.nn.layers.feedforward.embedding.EmbeddingLayer ret =
                         new org.deeplearning4j.nn.layers.feedforward.embedding.EmbeddingLayer(conf);
         ret.setListeners(iterationListeners);
@@ -55,7 +55,7 @@ public class EmbeddingLayer extends FeedForwardLayer {
 
         @Override
         @SuppressWarnings("unchecked")
-        public EmbeddingLayer build() {
+        public LeftAndRightPaddingLayer build() {
             return new EmbeddingLayer(this);
         }
     }

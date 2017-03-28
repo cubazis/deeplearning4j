@@ -31,9 +31,9 @@ public abstract class FeedForwardLayer extends Layer {
     @Override
     public InputType getOutputType(int layerIndex, InputType inputType) {
         if (inputType == null || (inputType.getType() != InputType.Type.FF
-                        && inputType.getType() != InputType.Type.CNNFlat)) {
+                && inputType.getType() != InputType.Type.CNNFlat)) {
             throw new IllegalStateException("Invalid input type (layer index = " + layerIndex + ", layer name=\""
-                            + getLayerName() + "\"): expected FeedForward input type. Got: " + inputType);
+                    + getLayerName() + "\"): expected FeedForward input type. Got: " + inputType);
         }
 
         return InputType.feedForward(nOut);
@@ -121,6 +121,10 @@ public abstract class FeedForwardLayer extends Layer {
             default:
                 throw new IllegalStateException("Unknown parameter: \"" + paramName + "\"");
         }
+    }
+
+    public String getLayerName() {
+        return layerName;
     }
 
     public abstract static class Builder<T extends Builder<T>> extends Layer.Builder<T> {

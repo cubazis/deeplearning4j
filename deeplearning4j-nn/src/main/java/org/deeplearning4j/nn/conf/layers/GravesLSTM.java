@@ -19,9 +19,9 @@
 package org.deeplearning4j.nn.conf.layers;
 
 import lombok.*;
-import org.deeplearning4j.nn.api.Layer;
 import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.GravesLSTMParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.util.LayerValidation;
@@ -53,8 +53,8 @@ public class GravesLSTM extends BaseRecurrentLayer {
     }
 
     @Override
-    public Layer instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
-                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf, Collection<IterationListener> iterationListeners,
+                                    int layerIndex, INDArray layerParamsView, boolean initializeParams) {
         LayerValidation.assertNInNOutSet("GravesLSTM", getLayerName(), layerIndex, getNIn(), getNOut());
         org.deeplearning4j.nn.layers.recurrent.GravesLSTM ret =
                         new org.deeplearning4j.nn.layers.recurrent.GravesLSTM(conf);
@@ -163,7 +163,7 @@ public class GravesLSTM extends BaseRecurrentLayer {
         }
 
         @SuppressWarnings("unchecked")
-        public GravesLSTM build() {
+        public LeftAndRightPaddingLayer build() {
             return new GravesLSTM(this);
         }
     }

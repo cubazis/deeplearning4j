@@ -5,6 +5,7 @@ import org.deeplearning4j.nn.api.ParamInitializer;
 import org.deeplearning4j.nn.conf.InputPreProcessor;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.inputs.InputType;
+import org.deeplearning4j.nn.layers.convolution.LeftAndRight;
 import org.deeplearning4j.nn.params.EmptyParamInitializer;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -30,9 +31,9 @@ public class ZeroPaddingLayer extends Layer {
     }
 
     @Override
-    public org.deeplearning4j.nn.api.Layer instantiate(NeuralNetConfiguration conf,
-                    Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView,
-                    boolean initializeParams) {
+    public LeftAndRight instantiate(NeuralNetConfiguration conf,
+                                    Collection<IterationListener> iterationListeners, int layerIndex, INDArray layerParamsView,
+                                    boolean initializeParams) {
         org.deeplearning4j.nn.layers.convolution.ZeroPaddingLayer ret =
                         new org.deeplearning4j.nn.layers.convolution.ZeroPaddingLayer(conf);
         ret.setListeners(iterationListeners);
@@ -84,7 +85,7 @@ public class ZeroPaddingLayer extends Layer {
     public InputPreProcessor getPreProcessorForInputType(InputType inputType) {
         if (inputType == null) {
             throw new IllegalStateException("Invalid input for ZeroPaddingLayer layer (layer name=\"" + getLayerName()
-                            + "\"): input is null");
+                    + "\"): input is null");
         }
 
         return InputTypeUtil.getPreProcessorForInputTypeCnnLayers(inputType, getLayerName());
@@ -103,6 +104,10 @@ public class ZeroPaddingLayer extends Layer {
     @Override
     public double getLearningRateByParam(String paramName) {
         return learningRate;
+    }
+
+    public String getLayerName() {
+        return layerName;
     }
 
     public static class Builder extends Layer.Builder<Builder> {
@@ -128,7 +133,7 @@ public class ZeroPaddingLayer extends Layer {
 
         @Override
         @SuppressWarnings("unchecked")
-        public ZeroPaddingLayer build() {
+        public LeftAndRightPaddingLayer build() {
             for (int p : padding) {
                 if (p < 0) {
                     throw new IllegalStateException(
