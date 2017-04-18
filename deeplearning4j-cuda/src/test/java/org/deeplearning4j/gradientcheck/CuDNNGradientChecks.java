@@ -15,7 +15,6 @@ import org.deeplearning4j.nn.layers.normalization.BatchNormalizationHelper;
 import org.deeplearning4j.nn.layers.normalization.CudnnBatchNormalizationHelper;
 import org.deeplearning4j.nn.layers.normalization.CudnnLocalResponseNormalizationHelper;
 import org.deeplearning4j.nn.layers.normalization.LocalResponseNormalizationHelper;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.junit.Test;
 import org.nd4j.linalg.api.buffer.DataBuffer;

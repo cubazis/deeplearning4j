@@ -21,7 +21,6 @@ package org.deeplearning4j.spark.impl.layer;
 
 import org.apache.spark.api.java.JavaRDD;
 import org.deeplearning4j.datasets.iterator.impl.IrisDataSetIterator;
-import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.layers.OutputLayer;

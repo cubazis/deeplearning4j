@@ -1,7 +1,6 @@
 package org.deeplearning4j.keras;
 
 import lombok.extern.slf4j.Slf4j;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 
 /**

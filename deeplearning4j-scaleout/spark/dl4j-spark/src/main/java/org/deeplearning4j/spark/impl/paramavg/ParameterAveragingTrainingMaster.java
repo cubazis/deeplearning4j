@@ -33,7 +33,6 @@ import org.apache.spark.broadcast.Broadcast;
 import org.apache.spark.input.PortableDataStream;
 import org.apache.spark.storage.StorageLevel;
 import org.deeplearning4j.nn.graph.ComputationGraph;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.spark.api.*;
 import org.deeplearning4j.spark.api.stats.SparkTrainingStats;

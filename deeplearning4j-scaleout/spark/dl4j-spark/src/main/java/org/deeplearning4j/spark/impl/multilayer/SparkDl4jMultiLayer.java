@@ -18,7 +18,6 @@
 
 package org.deeplearning4j.spark.impl.multilayer;
 
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaDoubleRDD;
@@ -29,19 +28,13 @@ import org.apache.spark.mllib.linalg.Matrix;
 import org.apache.spark.mllib.linalg.Vector;
 import org.apache.spark.mllib.regression.LabeledPoint;
 import org.apache.spark.rdd.RDD;
-import org.deeplearning4j.api.storage.StatsStorageRouter;
-import org.deeplearning4j.api.storage.StatsStorageRouterProvider;
-import org.deeplearning4j.api.storage.listener.RoutingIterationListener;
 import org.deeplearning4j.eval.*;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.layers.FeedForwardLayer;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
-import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.spark.api.TrainingMaster;
 import org.deeplearning4j.spark.api.stats.SparkTrainingStats;
 import org.deeplearning4j.spark.impl.SparkListenable;
 import org.deeplearning4j.spark.impl.common.reduce.IntDoubleReduceFunction;
-import org.deeplearning4j.spark.impl.listeners.VanillaStatsStorageRouterProvider;
 import org.deeplearning4j.spark.impl.multilayer.evaluation.*;
 import org.deeplearning4j.spark.impl.multilayer.scoring.FeedForwardWithKeyFunction;
 import org.deeplearning4j.spark.impl.multilayer.scoring.ScoreExamplesFunction;
@@ -63,7 +56,6 @@ import scala.Tuple2;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.util.*;
 
 /**

@@ -21,7 +21,6 @@ package org.deeplearning4j.spark.impl.multilayer.scoring;
 import org.apache.spark.broadcast.Broadcast;
 import org.datavec.spark.functions.FlatMapFunctionAdapter;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.spark.util.BaseDoubleFlatMapFunctionAdaptee;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.api.ops.executioner.GridExecutioner;

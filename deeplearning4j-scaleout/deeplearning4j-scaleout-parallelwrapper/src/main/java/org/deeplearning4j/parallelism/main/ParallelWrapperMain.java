@@ -8,7 +8,6 @@ import org.deeplearning4j.api.storage.impl.RemoteUIStatsStorageRouter;
 import org.deeplearning4j.nn.api.Model;
 import org.deeplearning4j.parallelism.ParallelWrapper;
 import org.deeplearning4j.ui.stats.StatsListener;
-import org.deeplearning4j.util.ModelGuesser;
 import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.dataset.api.iterator.MultiDataSetIterator;

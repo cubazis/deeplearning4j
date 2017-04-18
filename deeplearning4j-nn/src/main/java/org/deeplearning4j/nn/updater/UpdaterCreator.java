@@ -1,10 +1,6 @@
 package org.deeplearning4j.nn.updater;
 
 import org.deeplearning4j.nn.api.Model;
-import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
-import org.deeplearning4j.nn.conf.Updater;
-import org.deeplearning4j.nn.conf.layers.Layer;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.nd4j.linalg.learning.GradientUpdater;
 
 /**

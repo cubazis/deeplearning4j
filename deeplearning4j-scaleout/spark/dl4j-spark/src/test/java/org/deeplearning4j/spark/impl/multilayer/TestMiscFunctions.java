@@ -11,7 +11,6 @@ import org.deeplearning4j.nn.conf.layers.variational.GaussianReconstructionDistr
 import org.deeplearning4j.nn.conf.layers.variational.LossFunctionWrapper;
 import org.deeplearning4j.nn.graph.ComputationGraph;
 import org.deeplearning4j.nn.layers.variational.VariationalAutoencoder;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.spark.BaseSparkTest;
 import org.deeplearning4j.spark.impl.graph.SparkComputationGraph;

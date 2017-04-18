@@ -1,7 +1,6 @@
 package org.deeplearning4j.ui.play;
 
 import org.deeplearning4j.api.storage.Persistable;
-import org.deeplearning4j.api.storage.StatsStorage;
 import org.deeplearning4j.api.storage.StatsStorageRouter;
 import org.deeplearning4j.api.storage.StorageMetaData;
 import org.deeplearning4j.api.storage.impl.CollectionStatsStorageRouter;
@@ -12,13 +11,11 @@ import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.layers.DenseLayer;
 import org.deeplearning4j.nn.conf.layers.OutputLayer;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
 import org.deeplearning4j.ui.api.UIServer;
 import org.deeplearning4j.ui.stats.StatsListener;
 import org.deeplearning4j.ui.stats.impl.SbeStatsInitializationReport;
 import org.deeplearning4j.ui.stats.impl.SbeStatsReport;
-import org.deeplearning4j.ui.storage.InMemoryStatsStorage;
 import org.deeplearning4j.ui.storage.impl.SbeStorageMetaData;
 import org.junit.Ignore;
 import org.junit.Test;

@@ -12,7 +12,6 @@ import org.deeplearning4j.nn.api.Model;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.gradient.Gradient;
 import org.deeplearning4j.nn.graph.ComputationGraph;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.ui.stats.api.*;
 import org.deeplearning4j.ui.stats.impl.DefaultStatsInitializationConfiguration;
 import org.deeplearning4j.ui.stats.impl.DefaultStatsUpdateConfiguration;

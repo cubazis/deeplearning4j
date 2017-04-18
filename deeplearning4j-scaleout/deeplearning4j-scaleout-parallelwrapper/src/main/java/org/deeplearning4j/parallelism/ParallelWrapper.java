@@ -2,10 +2,8 @@ package org.deeplearning4j.parallelism;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import org.deeplearning4j.api.storage.Persistable;
 import org.deeplearning4j.api.storage.StatsStorageRouter;
 import org.deeplearning4j.api.storage.StatsStorageRouterProvider;
-import org.deeplearning4j.api.storage.StorageMetaData;
 import org.deeplearning4j.api.storage.listener.RoutingIterationListener;
 import org.deeplearning4j.datasets.iterator.AsyncDataSetIterator;
 import org.deeplearning4j.datasets.iterator.AsyncMultiDataSetIterator;
@@ -14,7 +12,6 @@ import org.deeplearning4j.nn.api.Updater;
 import org.deeplearning4j.nn.conf.ComputationGraphConfiguration;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.graph.ComputationGraph;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.updater.graph.ComputationGraphUpdater;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.nd4j.linalg.api.ndarray.INDArray;

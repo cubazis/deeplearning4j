@@ -26,7 +26,6 @@ import org.deeplearning4j.earlystopping.listener.EarlyStoppingListener;
 import org.deeplearning4j.earlystopping.scorecalc.ScoreCalculator;
 import org.deeplearning4j.earlystopping.termination.EpochTerminationCondition;
 import org.deeplearning4j.earlystopping.termination.IterationTerminationCondition;
-import org.deeplearning4j.earlystopping.trainer.IEarlyStoppingTrainer;
 import org.deeplearning4j.nn.api.Model;
 import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.MultiDataSet;

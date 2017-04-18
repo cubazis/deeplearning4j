@@ -6,7 +6,6 @@ import org.datavec.image.loader.ImageLoader;
 import org.deeplearning4j.nn.api.Layer;
 import org.deeplearning4j.nn.api.Model;
 import org.deeplearning4j.nn.layers.convolution.ConvolutionLayer;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.ui.UiConnectionInfo;
 import org.deeplearning4j.ui.WebReporter;

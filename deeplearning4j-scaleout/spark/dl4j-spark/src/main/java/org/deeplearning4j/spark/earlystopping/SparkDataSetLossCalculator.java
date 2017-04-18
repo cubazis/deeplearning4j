@@ -21,7 +21,6 @@ package org.deeplearning4j.spark.earlystopping;
 import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaRDD;
 import org.deeplearning4j.earlystopping.scorecalc.ScoreCalculator;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.spark.impl.multilayer.SparkDl4jMultiLayer;
 import org.nd4j.linalg.dataset.DataSet;
 
